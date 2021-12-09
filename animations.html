@@ -1,0 +1,68 @@
+<!doctype html>
+
+<!-- 
+	=========================================
+	
+		Filename: animations.html
+		
+		Author: Kevin Streeter
+		
+		Description: Explorations of programs using arrays of consecutive images to display animated objects.
+	
+	=========================================
+-->
+
+<html lang = "en">
+
+	<head>
+	
+		<meta charset = "utf-8">
+		
+		<title>Animations</title>
+		
+		<style>
+			body {
+				background-color: firebrick;
+				color: antiquewhite;
+				margin: auto;
+				padding: 20px;
+				text-align: center;
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<h1>Animations</h1>
+		
+		<button onclick = "runShow()">Animate</button>
+		
+		<p>
+			<img src = "images/image1.png" id = "frame-output" />
+		</p>
+		
+		<script>
+			function runShow() {
+				// This function will display a series of images in rapid succession as an animation.
+				
+				var imageSet = [
+								'image1', 'image2', 'image3',
+								'image4', 'image5', 'image6',
+								'image7', 'image8', 'image9', 'image10'
+				];
+				
+				for (i = 0; i < imageSet.length; i++){
+				
+					setTimeout(function() {
+					
+						document.getElementById('frame-output').src = 'images/' + imageSet[i] + '.png';
+					
+					}, 500);
+				}
+			
+			}
+		</script>
+		
+	</body>
+	
+<html>
