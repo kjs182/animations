@@ -8,6 +8,10 @@
 		Author: Kevin Streeter
 		
 		Description: Explorations of programs using arrays of consecutive images to display animated objects.
+		
+		Functionality: In the runAnimation function, place the name of the folder as the first argument
+						and the number of images in the folder as the second argument. All of the images
+						in the folder must be named "image" with an ascending number starting with one.
 	
 	=========================================
 -->
@@ -35,30 +39,28 @@
 	<body>
 		<h1>Animations</h1>
 		
-		<button onclick = "start()">Animate</button>
+		<button onclick = "runAnimation('smiley', 12)">Smiley</button>
 		
 		<p>
-			<img src = "images/image1.png" id = "frame-output" />
+			<img src = "image0.png" id = "frame-output" />
 		</p>
 		
 		<script>
-			function start() {
+			function runAnimation(imagesFolder, numberOfImages) {
 				// This function will control the iterations.
-				
-				let numberOfImages = 12;
 				
 				for (i = 1; i <= numberOfImages; i++){
 					// The images are named "image1," "image2," etc.
-					runShow(i);
+					cycleImages(imagesFolder, i);
 				}
 			}
 			
-			function runShow(i) {
+			function cycleImages(imagesFolder, i) {
 				// This function will display a series of images in rapid succession as an animation.
 				
 				setTimeout(function() {
 					
-						document.getElementById('frame-output').src = 'images/image' + i + '.png';
+						document.getElementById('frame-output').src = imagesFolder + '/image' + i + '.png';
 					
 					}, 200 * i); // Adds a 1/2 second delay between iterations.
 			
