@@ -9,9 +9,12 @@
 		
 		Description: Explorations of programs using arrays of consecutive images to display animated objects.
 		
-		Functionality: In the runAnimation function, place the name of the folder as the first argument
-						and the number of images in the folder as the second argument. All of the images
-						in the folder must be named "image" with an ascending number starting with one.
+		Functionality: In the runAnimation function, place the name of the folder as the first argument,
+						the number of images in the folder as the second argument, and the location (image holder)
+						of the animation as the third argument. All of the images in the folder must be named "image"
+						followed by an ascending number starting with one.
+						
+						The default image is called "image0" and should remain in the root folder.
 	
 	=========================================
 -->
@@ -39,28 +42,28 @@
 	<body>
 		<h1>Animations</h1>
 		
-		<button onclick = "runAnimation('smiley', 12)">Smiley</button>
+		<button onclick = "runAnimation('smiley', 12, 'frame-output')">Smiley</button>
 		
 		<p>
 			<img src = "image0.png" id = "frame-output" />
 		</p>
 		
 		<script>
-			function runAnimation(imagesFolder, numberOfImages) {
+			function runAnimation(imagesFolder, numberOfImages, animationLocation) {
 				// This function will control the iterations.
 				
 				for (i = 1; i <= numberOfImages; i++){
 					// The images are named "image1," "image2," etc.
-					cycleImages(imagesFolder, i);
+					cycleImages(imagesFolder, animationLocation, i);
 				}
 			}
 			
-			function cycleImages(imagesFolder, i) {
+			function cycleImages(imagesFolder, animationLocation, i) {
 				// This function will display a series of images in rapid succession as an animation.
 				
 				setTimeout(function() {
 					
-						document.getElementById('frame-output').src = imagesFolder + '/image' + i + '.png';
+						document.getElementById(animationLocation).src = imagesFolder + '/image' + i + '.png';
 					
 					}, 200 * i); // Adds a 1/2 second delay between iterations.
 			
